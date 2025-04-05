@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[ExecuteInEditMode]
 public class DepthLayer : MonoBehaviour
 {
     private static readonly int BlurSize = Shader.PropertyToID("_BlurSize");

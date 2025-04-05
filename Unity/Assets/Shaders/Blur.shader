@@ -3,6 +3,7 @@ Shader "Custom/Blur"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _Color ("Tint Color", Color) = (1,1,1,1)
         _BlurSize ("Blur Size", Range(0, 30)) = 30
         _Samples ("Number of Samples", Range(1, 16)) = 16
     }
@@ -25,6 +26,7 @@ Shader "Custom/Blur"
 
             sampler2D _MainTex;
             float4 _MainTex_TexelSize;
+            fixed4 _Color;
             float _BlurSize;
             int _Samples;
 
@@ -61,7 +63,7 @@ Shader "Custom/Blur"
                     alpha += sample.a;
                 }
                 if (alpha > 0) color /= alpha;
-                return fixed4(color, alpha / _Samples);
+                return fixed4(color, alpha / _Samples) * _Color;
             }
             ENDCG
         }

@@ -1,17 +1,26 @@
 using DG.Tweening;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class DepthManager : MonoBehaviour
 {
     public static DepthManager Instance { get; private set; }
 
-    public float CurrentDepth { get; private set; }
+    public float CurrentDepth => depth;
     public int TargetDepth { get; private set; }
-    public bool IsOnTarget => Mathf.Approximately(CurrentDepth, TargetDepth);
-    
-    private Tween tween;
+    public bool IsOnTarget => Mathf.Approximately(depth, TargetDepth);
 
-    private void Awake() => Instance = this;
+    [SerializeField] private float depth;
+
+    private Tween tween;
+    
+    private DepthManager() => Instance = this;
+
+    private void Awake()
+    {
+        Instance = this;
+        TargetDepth = (int)depth;
+    }
 
     private void Update()
     {
@@ -25,6 +34,6 @@ public class DepthManager : MonoBehaviour
         TargetDepth = targetDepth;
         if (tween != null && tween.IsActive())
             tween.Kill();
-        tween = DOTween.To(() => CurrentDepth, x => CurrentDepth = x, targetDepth, 0.5f);
+        tween = DOTween.To(() => depth, x => depth = x, targetDepth, 0.5f);
     }
 }
