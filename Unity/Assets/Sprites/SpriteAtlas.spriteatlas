@@ -103,6 +103,7 @@ SpriteAtlas:
     - 2cb09807a0d7caa46a7623b35e430f0a: 8402313938754578697
     - af3d11376a41718478d8bd83f24d74aa: 21300000
     - e2758b97e04d6724badf1a590735bf70: -5933147927313123476
+    - 0af56eb7f2784834bbf58ccb839327b0: -9169317725022409189
     - c270a9e73ff11514fabb3762710adebb: 21300000
     - 08b6a2f7592722b4487e2c3ef0a9944b: 21300000
     - d9ab262895676ab43b49ae2d4d61535d: 21300000
@@ -159,6 +160,7 @@ SpriteAtlas:
     - 9366ab5f379b370488be410c414b6228: -9111787586913977784
     - f319228fe348de94195014446cc7a3f5: -4038793347124054356
     - 83ab12af86a60484ebf6898f58611234: 912055541803183927
+    - 319181cf72a95474e9a78f0a26799c49: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: deb5c0208c6a15b4e87414433297544f, type: 3}
@@ -214,6 +216,7 @@ SpriteAtlas:
   - {fileID: 8402313938754578697, guid: 2cb09807a0d7caa46a7623b35e430f0a, type: 3}
   - {fileID: 21300000, guid: af3d11376a41718478d8bd83f24d74aa, type: 3}
   - {fileID: -5933147927313123476, guid: e2758b97e04d6724badf1a590735bf70, type: 3}
+  - {fileID: -9169317725022409189, guid: 0af56eb7f2784834bbf58ccb839327b0, type: 3}
   - {fileID: 21300000, guid: c270a9e73ff11514fabb3762710adebb, type: 3}
   - {fileID: 21300000, guid: 08b6a2f7592722b4487e2c3ef0a9944b, type: 3}
   - {fileID: 21300000, guid: d9ab262895676ab43b49ae2d4d61535d, type: 3}
@@ -270,6 +273,7 @@ SpriteAtlas:
   - {fileID: -9111787586913977784, guid: 9366ab5f379b370488be410c414b6228, type: 3}
   - {fileID: -4038793347124054356, guid: f319228fe348de94195014446cc7a3f5, type: 3}
   - {fileID: 912055541803183927, guid: 83ab12af86a60484ebf6898f58611234, type: 3}
+  - {fileID: 21300000, guid: 319181cf72a95474e9a78f0a26799c49, type: 3}
   m_PackedSpriteNamesToIndex:
   - WindowDog
   - ManHit
@@ -324,6 +328,7 @@ SpriteAtlas:
   - Roof
   - Sky
   - Edge
+  - PoopParticle
   - Rain
   - Partner
   - DoorFrame
@@ -380,6 +385,7 @@ SpriteAtlas:
   - Woman
   - Cloud
   - Umbrella
+  - PoopParticle
   m_RenderDataMap: {}
   m_Tag: SpriteAtlas
   m_IsVariant: 0

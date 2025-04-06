@@ -31,6 +31,7 @@ public partial class DialogManager
     }
 
     private bool manDialogueShown;
+
     public async UniTask ManDialogue()
     {
         if (manDialogueShown)
@@ -57,8 +58,13 @@ public partial class DialogManager
         await WaitForSeconds(2);
         if (currentMessageId == id)
         {
-            await ShowMessage(avatar, "Is there a chance of them hitting that guy over there?\nNah, no way...");
-            await WaitForSeconds(3);
+            await ShowMessage(avatar, "Is there a chance of them hitting that guy over there?");
+            await WaitForSeconds(2);
+            if (currentMessageId == id)
+            {
+                await ShowMessage(avatar, "Nah, no way...");
+                await WaitForSeconds(3);
+            }
         }
 
         if (currentMessageId == id)
@@ -78,8 +84,14 @@ public partial class DialogManager
     public async UniTask TennisDialogue()
     {
         var id = currentMessageId = Guid.NewGuid();
-        await ShowMessage(avatar, "I'm always up for a game of tennis!\n                                                  \nNot right now though...");
-        await WaitForSeconds(3);
+        await ShowMessage(avatar, "I'm always up for a game of tennis!");
+        await WaitForSeconds(2);
+        if (currentMessageId == id)
+        {
+            await ShowMessage(avatar, "Just not right now though...");
+            await WaitForSeconds(3);
+        }
+
         if (currentMessageId == id)
             await Hide();
     }

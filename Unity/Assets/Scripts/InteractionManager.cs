@@ -55,6 +55,8 @@ public class InteractionManager : MonoBehaviour
     [SerializeField] private Transform ballAnchor;
     [SerializeField] private Transform poopAnchor;
     [SerializeField] private Transform bird;
+    [SerializeField] private Transform poopParticlePrefab;
+    [SerializeField] private Transform poopParticleContainer;
 
     private int poopCount;
     private int lightningCount;
@@ -71,6 +73,7 @@ public class InteractionManager : MonoBehaviour
         Debug.Log($"Interaction: {interaction}");
         switch (interaction)
         {
+            // not used
             case Interaction.Bird:
                 poopCount++;
                 if (poopCount % 3 == 0)
@@ -182,15 +185,23 @@ public class InteractionManager : MonoBehaviour
                     }
                     else if (!ManLeft && !poopFlying)
                     {
+                        bool hit = Mathf.Abs(bird.localPosition.x - 4) <= 0.2f;
                         poopFlying = true;
-                        bool hit = Mathf.Abs(bird.localPosition.x - 4) <= 0.1f;
                         poopAnchor.localPosition = new Vector2(bird.localPosition.x, poopAnchor.localPosition.y);
                         poopAnimator.Play(hit ? "Hit" : "Poop");
                         await WaitForSeconds(1.5f);
                         if (hit)
                             OnPoopHit();
-                        await WaitForSeconds(0.5f);
-                        poopFlying = false;
+                        else
+                        {
+                            await WaitForSeconds(1 / 3f);
+                            poopFlying = false;
+                            var poopParticle = Instantiate(poopParticlePrefab, poopParticleContainer);
+                            poopParticle.localPosition = new Vector2(poopAnchor.localPosition.x, 0);
+                            poopCount++;
+                            if (poopCount % 3 == 0)
+                                await DialogManager.Instance.BirdDialogue();
+                        }
                     }
 
                 break;
@@ -222,13 +233,16 @@ public class InteractionManager : MonoBehaviour
 
     public async void OnPoopHit()
     {
+        _ = DialogManager.Instance.BirdHitDialogue();
+        manCollisionBox.blocksRaycasts = false;
         manAnimator.Play("ManLeaving");
         skyAnimator.Play("Clouded");
         birdAnimator.SetBool("Loop", false);
         ManLeft = true;
-        Clouded = true;
         await WaitForSeconds(4.75f);
         doorAnimator.Play("Open");
         DoorOpen = true;
+        await WaitForSeconds(0.25f);
+        Clouded = true;
     }
 }

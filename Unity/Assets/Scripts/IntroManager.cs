@@ -10,7 +10,7 @@ public class IntroManager : MonoBehaviour
     
     private async void Init()
     {
-        // await GridGamesIntroManager.Instance.Play();
+        await GridGamesIntroManager.Instance.Play();
         await DialogManager.Instance.MissionDialogue();
     }
 }
