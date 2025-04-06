@@ -26,6 +26,8 @@ public partial class DialogManager : MonoBehaviour
     private Tween positionTween;
     private bool isShown;
     private event EventHandler clicked;
+    
+    protected Guid currentMessageId;
 
     public DialogManager() => Instance = this;
 
@@ -46,11 +48,15 @@ public partial class DialogManager : MonoBehaviour
         isTyping = false;
     }
 
+    private Guid typewriterId;
     private async UniTask TypewriterEffect(string message)
     {
+        var id = typewriterId = Guid.NewGuid();
         messageText.text = "";
         foreach (var c in message)
         {
+            if (id != typewriterId)
+                break;
             if (messageText.text.Length % beepStep == 0)
                 PlayBeep();
             messageText.text += c;
@@ -70,7 +76,11 @@ public partial class DialogManager : MonoBehaviour
     }
 
     private async UniTask Show() => await AnimateShown(true);
-    private async UniTask Hide() => await AnimateShown(false);
+    private async UniTask Hide()
+    {
+        await AnimateShown(false);
+        messageText.text = "";
+    }
 
     private async UniTask AnimateShown(bool shown)
     {
@@ -90,6 +100,13 @@ public partial class DialogManager : MonoBehaviour
         clicked += Handler;
         await tcs.Task;
         clicked -= Handler;
+    }
+
+    private async UniTask WaitForSeconds(float seconds)
+    {
+        var tcs = new UniTaskCompletionSource<bool>();
+        await UniTask.Delay((int)(seconds * 1000));
+        tcs.TrySetResult(true);
     }
 
     private void Update()

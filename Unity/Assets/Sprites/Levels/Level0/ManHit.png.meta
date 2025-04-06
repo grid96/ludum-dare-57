@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 136da918e87581148983a37610b87846
+guid: 6bb22f5058e260a4e951b3d187376277
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1969172876329986045
-    second: Binoculars_0
+      213: -785994738067800515
+    second: ManHit_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 0
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Binoculars_0
+      name: ManHit_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 1920
-        height: 1080
+        width: 13
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 308540db3b71ca4e0800000000000000
-      internalID: -1969172876329986045
+      spriteID: d3e742a33f59715f0800000000000000
+      internalID: -785994738067800515
       vertices: []
       indices: 
       edges: []
@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ManHit_0: -785994738067800515
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
