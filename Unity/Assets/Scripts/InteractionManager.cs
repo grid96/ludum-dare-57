@@ -1,6 +1,8 @@
 using System;
+using CarterGames.Assets.AudioManager;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class InteractionManager : MonoBehaviour
 {
@@ -148,6 +150,7 @@ public class InteractionManager : MonoBehaviour
             case Interaction.Antenna:
                 if (Raining)
                 {
+                    AudioManager.instance.Play("Lightning", 0.5f, Random.Range(1, 1.25f));
                     Array.ForEach(lightningAnimators, animator => animator.gameObject.SetActive(true));
                     await WaitForSeconds(0.2f);
                     Array.ForEach(lightningAnimators, animator => animator.gameObject.SetActive(false));
@@ -175,6 +178,7 @@ public class InteractionManager : MonoBehaviour
                     if (Clouded)
                     {
                         Raining = true;
+                        LoopRain();
                         Array.ForEach(rainAnimators, animator => animator.Play("StartRaining"));
                         womanAnimator.Play("Walk");
                         await WaitForSeconds(3.5f);
@@ -214,6 +218,7 @@ public class InteractionManager : MonoBehaviour
                         OnTarget = true;
                         targetAnimator.Play("Aim");
                         await DialogManager.Instance.TargetDialogue();
+                        AudioManager.instance.Play("Shot", 0.5f);
                         bodyAnimator.Play("Die");
                         missionCompleteAnimator.Play("Success");
                     }
@@ -244,5 +249,23 @@ public class InteractionManager : MonoBehaviour
         DoorOpen = true;
         await WaitForSeconds(0.25f);
         Clouded = true;
+    }
+
+    public async void LoopWind()
+    {
+        while (true)
+        {
+            AudioManager.instance.Play("Wind", 0.2f);
+            await WaitForSeconds(15);
+        }
+    }
+
+    public async void LoopRain()
+    {
+        while (true)
+        {
+            AudioManager.instance.Play("Rain", 0.2f);
+            await WaitForSeconds(30);
+        }
     }
 }

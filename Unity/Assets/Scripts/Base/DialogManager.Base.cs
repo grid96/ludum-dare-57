@@ -20,7 +20,7 @@ public partial class DialogManager : MonoBehaviour
     private const string beepSoundName = "Beep";
     private const int beepStep = 3;
     private const float beepMinPitch = 1;
-    private const float beepMaxPitch = 1.5f;
+    private const float beepMaxPitch = 1.25f;
     private readonly Queue<(RuntimeAnimatorController avatar, string message)> messageQueue = new();
     private bool isTyping;
     private Tween positionTween;

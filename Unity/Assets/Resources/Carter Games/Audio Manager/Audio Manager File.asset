@@ -25,3 +25,13 @@ MonoBehaviour:
     value: {fileID: 8300000, guid: b1db5b0c739f90947b49dde6691e466e, type: 3}
   - key: Beep
     value: {fileID: 8300000, guid: c66766e1d8c808a42a2812f1225ce9ce, type: 3}
+  - key: Lightning
+    value: {fileID: 8300000, guid: 8ff4d8566be175448a488c656c539354, type: 3}
+  - key: Rain
+    value: {fileID: 8300000, guid: 774d17574590ed546995a4aed1feca46, type: 3}
+  - key: Shot
+    value: {fileID: 8300000, guid: e8c414b54a6a1834e80d6d35f24cd060, type: 3}
+  - key: Success
+    value: {fileID: 8300000, guid: c4f299ed0a9a3f5408d0096bcb740a66, type: 3}
+  - key: Wind
+    value: {fileID: 8300000, guid: 1ef0c6e9f64395249a4b0c6aa5e3ee66, type: 3}

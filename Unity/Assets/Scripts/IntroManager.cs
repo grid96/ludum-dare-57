@@ -11,6 +11,7 @@ public class IntroManager : MonoBehaviour
     private async void Init()
     {
         await GridGamesIntroManager.Instance.Play();
+        InteractionManager.Instance.LoopWind();
         await DialogManager.Instance.MissionDialogue();
     }
 }
